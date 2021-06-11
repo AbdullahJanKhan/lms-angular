@@ -19,7 +19,51 @@ export class DeleteAssignmentComponent implements OnInit {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
       }
-    }).then((res: any) => console.log(res))
+    }).then((res: any) => {
+      if (res.data.success) {
+        this.assignments = res.data.rec;
+      }
+      else {
+        this.assignments = [{
+          name: 'No Record Found',
+          enddate: 'N/A',
+          endtime: 'N/A',
+          _id: null
+        }]
+      }
+    })
+  }
+
+  handleDelete(event: Event, id: any) {
+    event.preventDefault();
+    if (!id) {
+      alert('Cannot Delete')
+    }
+    else {
+      axios.delete('http://localhost:3000/users/deleteassignment/' + String(id))
+        .then(res => {
+          if (res.data.success) {
+            axios.get('http://localhost:3000/users/getassignments', {
+              headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+              }
+            }).then((res: any) => {
+              if (res.data.success) {
+                this.assignments = res.data.rec;
+              }
+              else {
+                this.assignments = [{
+                  name: 'No Record Found',
+                  enddate: 'N/A',
+                  endtime: 'N/A',
+                  _id: null
+                }]
+              }
+            })
+          }
+        })
+    }
   }
 
 }

@@ -1,1 +1,35 @@
+<style>
+  td {
+    padding: 10px;
+  }
+
+  table {
+    border-spacing: 10px;
+    border-collapse: separate;
+  }
+
+</style>
+
 <p>submit-assignment works!</p>
+<table>
+  <tr>
+    <td>No.</td>
+    <td>Name</td>
+    <td>End Date</td>
+    <td>End Time</td>
+    <td>Option</td>
+  </tr>
+  <tr *ngFor="let assignment of assignments; let i=index ">
+    <td>{{i+1}}</td>
+    <td>{{assignment.name}}</td>
+    <td>{{assignment.enddate}}</td>
+    <td>{{assignment.endtime}}</td>
+    <td>
+      <input type="text" [(ngModel)]='studentName' placeholder="Enter Your Name">
+      <br><br>
+      <input type="file" (change)="fileUpload($event)">
+      <br><br>
+      <button (click)="handleSubmit($event, assignment._id)">Upload</button>
+    </td>
+  </tr>
+</table>
