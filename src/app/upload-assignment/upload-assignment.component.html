@@ -1,0 +1,13 @@
+<p>upload-assignment works!</p>
+<p>Upload The Assignment: </p>
+<input type="file" (change)="fileUpload($event)">
+<br>
+<p>Select a Deadline: </p>
+<p>
+  Date: <input type='date' [(ngModel)]='date'>
+</p>
+<p>
+  Time: <input type="time" [(ngModel)]='time'>
+</p>
+<p>Assignment Name: {{fileName || 'No File Uploaded'}}</p>
+<input type="submit" (click)="handleSubmit($event)">

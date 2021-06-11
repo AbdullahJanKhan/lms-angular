@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'lms';
+  name = 'Abdullah Jan Khan';
+  testVar = 'Testing 2 way data binding';
+  save() {
+    alert('You Clicked')
+  }
 }
