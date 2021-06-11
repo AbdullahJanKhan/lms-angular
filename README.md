@@ -2,6 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.3.
 
+# Frontend Idea
+
+To have an idea look into src -> app -> app.component.ts and app.component.ts thet are the base file
+src -> app -> uploadassignment -> upload-assignment.ts and upload-assignment.html for working of angular and express
+to check routes visit src -> app -> app-routing.module.ts
+
+# Backend
+To get ab idea about backend visit backend -> routes -> users
+you'll find the routes written there
+they are called using axios from angular
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
