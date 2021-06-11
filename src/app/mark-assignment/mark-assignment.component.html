@@ -1,1 +1,48 @@
+<style>
+  td {
+    padding: 10px;
+  }
+
+  table {
+    border-spacing: 10px;
+    border-collapse: separate;
+  }
+
+</style>
+
 <p>mark-assignment works!</p>
+<h2>Select Assignment you want to mark</h2>
+
+<table>
+  <tr>
+    <td>No.</td>
+    <td>Name</td>
+  </tr>
+  <tr *ngFor="let assignment of assignments; let i=index ">
+    <td>{{i+1}}</td>
+    <td (click)="onClick(assignment._id)">{{assignment.name}}</td>
+  </tr>
+</table>
+
+<h2>Mark Assignemnts</h2>
+
+<table *ngIf="submission[0].studentname">
+  <tr>
+    <td>No.</td>
+    <td>Student Name</td>
+    <td>File Name</td>
+    <td>Submitted At</td>
+    <td>Add Marks</td>
+  </tr>
+  <tr *ngFor="let submit of submission; let i=index">
+    <td>{{i+1}}</td>
+    <td>{{submit.studentname}}</td>
+    <td>{{submit.filename}}</td>
+    <td>{{submit.submitted_at}}</td>
+    <td>
+      <input type="text" [(ngModel)]="submit.marks">
+      <br>
+      <input type="submit" (click)="updateMarks($event, submit.marks, submit._id)">
+    </td>
+  </tr>
+</table>

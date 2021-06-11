@@ -173,4 +173,35 @@ router.get('/getsubmission/:id', (req, res) => {
   })
 })
 
+router.patch('/updatemarks', (req, res) => {
+  Submission.findById(req.body.id, (err, data) => {
+    if (err)
+      res.json({
+        success: false,
+        err: err.name
+      })
+    else if (data) {
+      data.marks = req.body.marks
+      data.save((err, data) => {
+        if (err)
+          res.json({
+            success: false,
+            err: err.name
+          })
+        else {
+          res.json({
+            success: true,
+            data: data
+          })
+        }
+      })
+    } else {
+      res.json({
+        success: false,
+        err: 'Not Found'
+      })
+    }
+  })
+})
+
 module.exports = router;
